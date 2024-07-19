@@ -1,29 +1,30 @@
-const mongoose = require("mongoose");
-
+const mongoose = require('mongoose');
 const agentSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
     trim: true,
   },
-  contact: {
+  password: {
     type: String,
     required: true,
+    trim: true,
+  },
+  contact: {
+    type: String,
     trim: true,
   },
   email: {
     type: String,
     required: true,
     trim: true,
-    unique: true, 
+    unique: true,
   },
   licenseInfo: {
     type: String,
-    required: true,
   },
   commissionInfo: {
     type: String,
-    required: true,
   },
   projects: [{
     type: mongoose.Schema.Types.ObjectId,

@@ -6,7 +6,12 @@ const clientSchema = new mongoose.Schema({
   },
   contact: {
     type: String,
+    // required: true,
+  },
+  password: {
+    type: String,
     required: true,
+    trim: true,
   },
   email: {
     type: String,
@@ -15,7 +20,7 @@ const clientSchema = new mongoose.Schema({
   },
   qatarId: {
     type: String,
-    required: true,
+    // required: true,
   },
   role: {
     type: String,
@@ -24,49 +29,45 @@ const clientSchema = new mongoose.Schema({
   },
   address: {
     type: String,
-    required: true,
+    // required: true,
   },
   state: {
     type: String,
-    required: true,
+    // required: true,
   },
   occupation: {
     type: String,
-    required: true,
+    // required: true,
   },
   designation: {
     type: String,
-    required: true,
+    // required: true,
   },
   organization: {
     type: String,
-    required: true,
+    // required: true,
   },
   dob: {
     type: Date,
-    required: true,
+    // required: true,
   },
   preferredLanguage: {
     type: String,
-    required: true,
+    // required: true,
   },
   city: {
     type: String,
-    required: true,
+    // required: true,
   },
   pinCode: {
     type: Number,
-    required: true,
+    // required: true,
   },
   source: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Master",
-    required: true,
+    // required: true,
   },
-  properties: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Property"
-  }]
 }, { timestamps: true }); 
 
 module.exports = mongoose.model("Client", clientSchema);
