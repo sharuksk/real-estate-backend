@@ -13,6 +13,12 @@ const agentSchema = new mongoose.Schema({
   contact: {
     type: String,
     trim: true,
+    required:true,
+    maxlength: 10,  
+  },
+  address: {
+    type: String,
+    required: true,
   },
   email: {
     type: String,
@@ -30,10 +36,10 @@ const agentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Project",
   }],
-  properties: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Property",
-  }],
+  // properties: [{
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "Property",
+  // }],
   role: {
     type: String,
     enum: ['Agent'],

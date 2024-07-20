@@ -6,7 +6,8 @@ const clientSchema = new mongoose.Schema({
   },
   contact: {
     type: String,
-    // required: true,
+    required: true,
+    maxlength: 10,  
   },
   password: {
     type: String,
@@ -29,7 +30,7 @@ const clientSchema = new mongoose.Schema({
   },
   address: {
     type: String,
-    // required: true,
+    required: true,
   },
   state: {
     type: String,

@@ -6,10 +6,12 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 const db=require("./config/dbConnect");
 const userRouter = require('./Routes/registerUserRoute');
+const adminRouter = require('./Routes/adminRoutes/adminRoute');
 require('dotenv').config();
 const PORT=8000;
 db.connect();
 app.use('/api/v1/users',userRouter)
+app.use('/api/v1/admin',adminRouter)
 app.listen(PORT,(req,res)=>{
     console.log(`App is listening at ${PORT}`)
 })
