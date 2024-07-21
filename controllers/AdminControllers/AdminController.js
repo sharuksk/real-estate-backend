@@ -245,7 +245,8 @@ exports.login = async (req, res) => {
       };
       return res.cookie('token', token, options).json({
         success: true,
-        message: 'User logged in successfully'
+        message: 'User logged in successfully',
+        // user,
       });
     } else {
       return res.status(400).json({
@@ -545,7 +546,6 @@ exports.updateAgentAdmin = async (req, res) => {
 };
 
 
-
 exports.updateOwnerSelf = async (req, res) => {
   const { name, contact, address, email,qatarId,pinCode,state,preferredLanguage,city,dob } = req.body;
   const ownerId = req.user.id; 
@@ -602,3 +602,33 @@ exports.updateOwnerAdmin = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+exports.postOwnerByAdmin=async (req,res)=>{
+  try{
+    const { name, contact, address, email,qatarId,pinCode,state,preferredLanguage,city,dob } = req.body;
+
+    if (!name || !email || !contact || !address || !qatarId || !pinCode || !state || !preferredLanguage || !city || !dob) {
+      return res.status(400).json({ success: false, message: "Please Provide All Required Details" });
+    }
+    const findOwner=await ownerSchema.findOne({email});
+    if(findOwner){
+      return res.status({
+        message:"Owner Already Exists"
+      })
+    }
+    const newOwner=new ownerSchema({
+      name,email,contact,address,qatarId,pinCode,state,preferredLanguage,dob
+    })
+    newOwner.save();
+    return res.status(200).json({
+      success:false,
+      message:"Details of Owner Saved by Admin"
+    })
+  }catch(error){
+console.log(error);
+return res.status(400).json({
+  success:false,
+  message:"Unexpected Error",
+})
+  }
+}

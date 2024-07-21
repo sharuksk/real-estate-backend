@@ -1,5 +1,5 @@
 const express=require('express');
-const { getClients, getOwners, getAgents, removeClient, removeAgent, removeOwner, updateClient, adminClientUpdate, updateAgentSelf, updateAgentAdmin, updateOwnerSelf, updateOwnerAdmin } = require('../../controllers/AdminControllers/AdminController');
+const { getClients, getOwners, getAgents, removeClient, removeAgent, removeOwner, updateClient, adminClientUpdate, updateAgentSelf, updateAgentAdmin, updateOwnerSelf, updateOwnerAdmin, postOwnerByAdmin } = require('../../controllers/AdminControllers/AdminController');
 const { isAuthenticated } = require('../../middlewares/isAuthenticated');
 const adminRouter=express.Router();
 adminRouter.get('/list-clients',getClients);
@@ -19,4 +19,8 @@ adminRouter.put('/update-admin/agent/:id',isAuthenticated,updateAgentAdmin)
 
 adminRouter.put('/update/owner',isAuthenticated,updateOwnerSelf);
 adminRouter.put('/update-admin/owner/:id',isAuthenticated,updateOwnerAdmin)
+
+
+adminRouter.post('/add-owner',isAuthenticated,postOwnerByAdmin);
+
 module.exports=adminRouter;

@@ -4,7 +4,7 @@ const { registerClient, registerOwner, registerAgent, adminregister, login, logo
 const { isAuthenticated } = require('../middlewares/isAuthenticated');
 userRouter.post('/register', async (req, res) => {
   const { role, name, email, password } = req.body;
-  
+
   // console.log("Request body:", req.body);
   
   if (!role || !name || !email || !password || (role !== 'Client' && role !== 'Owner' && role !== 'Agent')) {
@@ -12,7 +12,7 @@ userRouter.post('/register', async (req, res) => {
   }
   
   switch (role) {
-    case "Client":
+    case "Client": 
       return registerClient(req, res);
     case "Owner":
       return registerOwner(req, res);

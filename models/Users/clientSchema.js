@@ -66,7 +66,7 @@ const clientSchema = new mongoose.Schema({
   },
   source: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Master",
+    ref: "Source",
     // required: true,
   },
 }, { timestamps: true }); 

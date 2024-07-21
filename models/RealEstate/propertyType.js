@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const amenitySchema = new mongoose.Schema({
-  amenityname: {
+const propertyTypeSchema = new mongoose.Schema({
+    propertyTypeName: {
     type: String,
     required: true,
     trim: true
@@ -12,4 +12,4 @@ const amenitySchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("Amenity", amenitySchema);
+module.exports = mongoose.model("Property Type", propertyTypeSchema);
