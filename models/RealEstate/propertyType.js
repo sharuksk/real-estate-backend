@@ -12,4 +12,4 @@ const propertyTypeSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("Property Type", propertyTypeSchema);
+module.exports = mongoose.model("PropertyType", propertyTypeSchema);
