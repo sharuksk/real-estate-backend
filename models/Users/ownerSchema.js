@@ -21,7 +21,7 @@ const ownerSchema = new mongoose.Schema({
   },
   qatarId: {
     type: String,
-    // required: true,
+    required: true,
   },
 
   address: {
@@ -30,30 +30,30 @@ const ownerSchema = new mongoose.Schema({
   },
   state: {
     type: String,
-    // required: true,
-  },
- 
-  role: {
-    type: String,
-    enum: ['Owner'],
     required: true,
   },
+ 
   dob: {
     type: Date,
-    // required: true,
+    required: true,
   },
   preferredLanguage: {
     type: String,
-    // required: true,
+    required: true,
   },
   city: {
     type: String,
-    // required: true,
+    required: true,
   },
   pinCode: {
     type: Number,
-    // required: true,
+    required: true,
   },
+  preferredLanguage: {
+    type: String,
+    required: true,
+  },
+ 
  
   
 }, { timestamps: true }); 

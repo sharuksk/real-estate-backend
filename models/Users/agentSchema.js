@@ -5,11 +5,6 @@ const agentSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  password: {
-    type: String,
-    required: true,
-    trim: true,
-  },
   contact: {
     type: String,
     trim: true,
@@ -32,6 +27,10 @@ const agentSchema = new mongoose.Schema({
   commissionInfo: {
     type: String,
   },
+  qatarId: {
+    type: String,
+    required: true,
+  },
   projects: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Project",
@@ -40,11 +39,6 @@ const agentSchema = new mongoose.Schema({
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: "Property",
   // }],
-  role: {
-    type: String,
-    enum: ['Agent'],
-    required: true,
-  }
 }, {
   timestamps: true,
 });

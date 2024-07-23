@@ -1,27 +1,25 @@
 const express=require('express');
-const { getClients, getOwners, getAgents, removeClient, removeAgent, removeOwner, updateClient, adminClientUpdate, updateAgentSelf, updateAgentAdmin, updateOwnerSelf, updateOwnerAdmin, postOwnerByAdmin } = require('../../controllers/AdminControllers/AdminController');
+const { createClient, updateClient, getClients, getClientById, createAgent, updateAgent, getAgent, getAgenttById, createOwner, updateOwner, getAllOwners, getOwnerById, removeClient, removeAgent, deleteOwner } = require('../../controllers/UserDetailsController/userDetailsController');
 const { isAuthenticated } = require('../../middlewares/isAuthenticated');
-const { adminMiddleware, clientMiddleware } = require('../../middlewares/roleMiddleware');
+const { adminMiddleware } = require('../../middlewares/roleMiddleware');
 const adminRouter=express.Router();
-adminRouter.get('/list-clients',getClients);
-adminRouter.get('/list-agents',getAgents);
-adminRouter.get('/list-owners',getOwners);
-
-adminRouter.delete('/delete-client/:id',removeClient);
-adminRouter.delete('/delete-agent/:id',removeAgent);
-adminRouter.delete('/delete-owner/:id',removeOwner);
-
-adminRouter.put('/update/client',isAuthenticated,clientMiddleware,updateClient); //client will update--
-adminRouter.put('/update-admin/client/:id',isAuthenticated,adminMiddleware,adminClientUpdate)
-
-adminRouter.put('/update/agent',isAuthenticated,updateAgentSelf);
-adminRouter.put('/update-admin/agent/:id',isAuthenticated,updateAgentAdmin)
-
-
-adminRouter.put('/update/owner',isAuthenticated,clientMiddleware,updateOwnerSelf);
-adminRouter.put('/update-admin/owner/:id',isAuthenticated,adminMiddleware,updateOwnerAdmin)
-
-
-adminRouter.post('/add-owner',isAuthenticated,postOwnerByAdmin);
+//Client
+adminRouter.post('/add-client',isAuthenticated,adminMiddleware,createClient);
+adminRouter.put('/update-client',isAuthenticated,adminMiddleware,updateClient);
+adminRouter.get('/list-clients',isAuthenticated,adminMiddleware,getClients);
+adminRouter.get('/client/:id',isAuthenticated,adminMiddleware,getClientById);
+adminRouter.delete('/remove-client',isAuthenticated,adminMiddleware,removeClient)
+//Agent
+adminRouter.post('/add-agent',isAuthenticated,adminMiddleware,createAgent);
+adminRouter.put('/update-agent',isAuthenticated,adminMiddleware,updateAgent);
+adminRouter.get('/list-agents',isAuthenticated,adminMiddleware,getAgent);
+adminRouter.get('/agent/:id',isAuthenticated,adminMiddleware,getAgenttById);
+adminRouter.delete('/remove-agent',isAuthenticated,adminMiddleware,removeAgent)
+//Owner
+adminRouter.post('/add-owner',isAuthenticated,adminMiddleware,createOwner);
+adminRouter.put('/update-owner',isAuthenticated,adminMiddleware,updateOwner);
+adminRouter.get('/list-owner',isAuthenticated,adminMiddleware,getAllOwners);
+adminRouter.get('/owner/:id',isAuthenticated,adminMiddleware,getOwnerById);
+adminRouter.delete('/remove-owner',isAuthenticated,adminMiddleware,deleteOwner)
 
 module.exports=adminRouter;

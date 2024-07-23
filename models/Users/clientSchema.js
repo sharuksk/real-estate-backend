@@ -9,11 +9,6 @@ const clientSchema = new mongoose.Schema({
     required: true,
     maxlength: 10,  
   },
-  password: {
-    type: String,
-    required: true,
-    trim: true,
-  },
   email: {
     type: String,
     required: true,
@@ -21,11 +16,6 @@ const clientSchema = new mongoose.Schema({
   },
   qatarId: {
     type: String,
-    // required: true,
-  },
-  role: {
-    type: String,
-    enum: ['Client'],
     required: true,
   },
   address: {
@@ -34,40 +24,40 @@ const clientSchema = new mongoose.Schema({
   },
   state: {
     type: String,
-    // required: true,
+    required: true,
   },
   occupation: {
     type: String,
-    // required: true,
+    required: true,
   },
   designation: {
     type: String,
-    // required: true,
+    required: true,
   },
   organization: {
     type: String,
-    // required: true,
+    required: true,
   },
   dob: {
     type: Date,
-    // required: true,
+    required: true,
   },
   preferredLanguage: {
     type: String,
-    // required: true,
+    required: true,
   },
   city: {
     type: String,
-    // required: true,
+    required: true,
   },
   pinCode: {
     type: Number,
-    // required: true,
+    required: true,
   },
   source: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Source",
-    // required: true,
+    required: true,
   },
 }, { timestamps: true }); 
 
